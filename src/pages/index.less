@@ -1,0 +1,39 @@
+.indexContent {
+  text-align: center;
+  background-color: #fff;
+  border-radius: 20px;
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 24px;
+}
+.logo {
+  width: 100%;
+}
+.buttonList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20px;
+  > button {
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+}
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  & > div {
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    white-space: break-spaces;
+  }
+  .formSource {
+    text-align: right;
+  }
+}
