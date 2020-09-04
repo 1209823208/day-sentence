@@ -5,11 +5,15 @@
     "build": "umi build",
     "postinstall": "umi generate tmp",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "lint": "eslint --ext .ts  --ext .tsx src",
+    "lint:fix": "eslint --fix --ext .ts --ext .tsx src",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "*.{js,jsx,less,md,json}": [

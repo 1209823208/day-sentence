@@ -2,8 +2,8 @@ import { Layout } from 'antd';
 import React, { useState, useEffect } from 'react';
 
 import { showTimeFormat } from './time';
-import { allBackgroundImgs } from "./backgroundImg";
-import styles from "./index.less";
+import { allBackgroundImgs } from './backgroundImg';
+import styles from './index.less';
 
 const { Header, Content, Footer } = Layout;
 
