@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
+import { IndexModelState, ConnectProps, Loading, connect } from 'umi';
 import { Row, Col, Button } from 'antd';
 import {
-  HeartOutlined,
+  HeartTwoTone,
   FolderAddOutlined,
   CopyOutlined,
   ShareAltOutlined,
@@ -10,14 +11,37 @@ import {
 import logo from '@/assets/forrest-gump.jpg';
 import styles from './index.less';
 
-export default () => {
+interface PageProps extends ConnectProps {
+  index: IndexModelState;
+  loading: boolean;
+}
+
+const IndexPage: FC<PageProps> = ({ index, dispatch }) => {
+  const { isLove } = index;
+
+  const handleLoveEvent = () => {
+    dispatch?.({
+      type: 'index/updateLove',
+      payload: {
+        isLove: !isLove,
+      },
+    });
+  };
+
   return (
     <div className={styles.indexContent}>
       <Row gutter={[16, 24]}>
         <Col span="10">
           <img className={styles.logo} src={logo} alt="" />
           <div className={styles.buttonList}>
-            <Button icon={<HeartOutlined />}>喜欢</Button>
+            <Button
+              icon={
+                <HeartTwoTone twoToneColor={isLove ? '#eb2f96' : 'black'} />
+              }
+              onClick={handleLoveEvent}
+            >
+              喜欢
+            </Button>
             <Button icon={<FolderAddOutlined />}>收藏</Button>
             <Button icon={<CopyOutlined />}>复制</Button>
             <Button icon={<ShareAltOutlined />}>分享</Button>
@@ -35,3 +59,10 @@ export default () => {
     </div>
   );
 };
+
+export default connect(
+  ({ index, loading }: { index: IndexModelState; loading: Loading }) => ({
+    index,
+    loading: loading.models.index,
+  }),
+)(IndexPage);
